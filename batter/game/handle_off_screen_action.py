@@ -3,31 +3,31 @@ from game.action import Action
 from game.point import Point
 
 class HandleOffScreenAction(Action):
-
+    """The responsibility of this class of objects is to update the game state when actors collide with edge of screen.
+    
+    Stereotype:
+        Controller
+    """
     def execute(self, cast):
-        for ball in cast["balls"]:
+        """Executes the action using the given actors.
+
+        Args:
+            cast (dict): The game actors {key: tag, value: list}.
+        """
+        for ball in cast["balls"]: 
             
-            if self.ball.center.x < 0 and self.ball.velocity.dx < 0:
-                self.ball.bounce_horizontal()
-
-            if self.ball.center.y < 0 and self.ball.velocity.dy < 0:
-                self.ball.bounce_vertical()
-
-            if self.ball.center.y > SCREEN_HEIGHT and self.ball.velocity.dy > 0:
-                self.ball.bounce_vertical()
-
-            x = ball.get_position().get_x()
-            y = ball.get_position().get_y()
-            dx = ball.get_velocity().get_x()
-            dy = ball.get_velocity().get_y()
-
-            if x == 0:
-                dx = constants.VELOCITY_DX * -1
-
-            if y == 0:    
-                dy = constants.VELOCITY_DY * -1
+            dx = constants.VELOCITY_DX
+            dy = constants.VELOCITY_DY
+            dxr = constants.RVELOCITY_DX
+            dyr = constants.RVELOCITY_DY
+            
+            if ball.get_position().get_x() == 800 or ball.get_position().get_x() == 0:
+                velocity = Point(dx, dyr)
+            elif ball.get_position().get_y() == 600 or ball.get_position().get_y() == 0:
+                velocity = Point(dxr, dy)
+            else:
+                velocity = Point(dxr,dyr)
         
-            velocity = Point(dx, dy)
             ball.set_velocity(velocity)   
 
 

@@ -19,7 +19,7 @@ from game.brick import Brick
 from game.ball import Ball
 from game.paddle import Paddle
 from game.control_actors_action import ControlActorsAction
-# from game.handle_collisions_action import HandleCollisionsAction
+from game.handle_collisions_action import HandleCollisionsAction
 from game.handle_off_screen_action import HandleOffScreenAction
 from game.move_actors_action import MoveActorsAction
 
@@ -46,13 +46,18 @@ def main():
     x = constants.BALL_X         
     y = constants.BALL_Y
     position = Point(x, y)
-    #velocity = Point(constants.VELOCITY_DX, constants.VELOCITY_DY)
-   
-    ball = Ball()
-    ball.set_position(position) 
-    #ball.set_velocity(velocity)
+    dx = constants.VELOCITY_DX
+    dy = constants.VELOCITY_DY
+    dxr = constants.RVELOCITY_DX
+    dyr = constants.RVELOCITY_DY
+    velocity = Point(dx, dy)
+    ball = Ball()    
+       
+    ball.set_position(position)
+    ball.set_velocity(velocity)
     balls.append(ball)
     cast["balls"] = [ball]
+
 
     # TODO: Create a paddle here and add it to the list
     paddles = []
@@ -77,13 +82,13 @@ def main():
     move_actors_action = MoveActorsAction()
     control_actors_action = ControlActorsAction(input_service)
     handle_off_screen_action = HandleOffScreenAction()
+    handle_collisions_action = HandleCollisionsAction(physics_service)
 
     # TODO: Create additional actions here and add them to the script
 
     script["input"] = [control_actors_action]
-    script["update"] = [move_actors_action, handle_off_screen_action]
+    script["update"] = [move_actors_action, handle_off_screen_action, handle_collisions_action]
     script["output"] = [draw_actors_action]
-
 
 
     # Start the game

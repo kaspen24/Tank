@@ -3,7 +3,7 @@ from game import constants
 
 class Paddle(Actor):
     """
-    Are the Bricks in the Game that the Ball tries to hit.
+    The Paddle in the Game that the Ball bounces off of.
     """
     def __init__(self):
         super().__init__()

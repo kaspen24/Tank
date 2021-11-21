@@ -129,3 +129,4 @@ class Actor:
     def has_image(self):
         return self._image != ""
 
+    

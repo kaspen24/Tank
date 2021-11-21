@@ -36,5 +36,7 @@ root                    (project root folder)
 * Raylib-py
 
 ## Authors
----
-* # TODO: Add your names and emails here
+KADEN SPENCER
+kaspen24@gmail.com
+
+
