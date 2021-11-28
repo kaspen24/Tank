@@ -23,7 +23,6 @@ class MoveActorsAction(Action):
             for actor in group:
                 if actor.get_velocity():
                     self._move_actor(actor)
-                    self._move_actor(cast["balls"][0])
 
     def _move_actor(self, actor):
         """Moves the given actor to its next position according to its 

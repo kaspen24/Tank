@@ -7,13 +7,13 @@ class HandleOffScreenAction(Action):
     
     Stereotype:
         Controller
-    """
+    
     def execute(self, cast):
-        """Executes the action using the given actors.
+        Executes the action using the given actors.
 
         Args:
             cast (dict): The game actors {key: tag, value: list}.
-        """
+        
         for ball in cast["balls"]: 
             
             dx = constants.VELOCITY_DX
@@ -21,15 +21,15 @@ class HandleOffScreenAction(Action):
             dxr = constants.RVELOCITY_DX
             dyr = constants.RVELOCITY_DY
             
-            if ball.get_position().get_x() == 800 or ball.get_position().get_x() == 0:
-                velocity = Point(dx, dyr)
-            elif ball.get_position().get_y() == 600 or ball.get_position().get_y() == 0:
+            if ball.get_position().get_x() >= 800 or ball.get_position().get_x() <= 0:
                 velocity = Point(dxr, dy)
+            elif ball.get_position().get_y() >= 600 or ball.get_position().get_y() <= 0:
+                velocity = Point(dx, dyr)
             else:
                 velocity = Point(dxr,dyr)
         
             ball.set_velocity(velocity)   
-
+"""
 
 
             

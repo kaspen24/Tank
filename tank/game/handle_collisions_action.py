@@ -8,26 +8,22 @@ class HandleCollisionsAction(Action):
     
     Stereotype:
         Controller
-    """
+    
     def __init__(self, physics_service):
         super().__init__()
         self._physics_service = physics_service
 
     def execute(self, cast):
-        """Executes the action using the given actors.
+        Executes the action using the given actors.
 
         Args:
             cast (dict): The game actors {key: tag, value: list}.
-        """
+        
         ball = cast["balls"][0] # there's only one
         paddle = cast["paddle"][0] # there's only one
         bricks = cast["brick"]
 
-        dx = constants.VELOCITY_DX
-        dy = constants.VELOCITY_DY
-        dxr = constants.RVELOCITY_DX
-        dyr = constants.RVELOCITY_DY
-        velocity = Point(dx,dyr)
+        velocity = ball.get_velocity()
 
         for ball in cast["balls"]:
             if self._physics_service.is_collision(ball, paddle):
@@ -35,4 +31,6 @@ class HandleCollisionsAction(Action):
 
         for brick in bricks:
             if self._physics_service.is_collision(ball, brick):
-                ball.set_velocity(velocity)        
+                ball.set_velocity(Point(ball.get_velocity().get_x(), ball.get_velocity().get_y() * -1))
+                bricks.remove(brick)        
+"""
