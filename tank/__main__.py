@@ -17,6 +17,7 @@ from game.physics_service import PhysicsService
 from game.tank import Tank
 from game.obstacles import Obstacles
 from game.robstacles import Robstacles
+from game.bullets import Bullets
 from game.control_actors_action import ControlActorsAction
 from game.handle_collisions_action import HandleCollisionsAction
 from game.move_actors_action import MoveActorsAction
@@ -72,7 +73,17 @@ def main():
         robstacles.append(robstacle)
     cast["robstacle"] = robstacles
    
-   
+   # TODO: Create a Bullets here and add it to the list
+    bullets = []
+    position = tank.get_position()
+    velocity = Point(0, constants.VELOCITY_DX)
+
+    bullet = Bullets()
+    bullet.set_position(position)
+    bullet.set_velocity(velocity)
+    bullets.append(bullet)
+    cast["bullet"] = bullets
+
     # Create the script {key: tag, value: list}
     script = {}
 

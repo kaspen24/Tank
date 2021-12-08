@@ -1,5 +1,8 @@
 from game import constants
 from game.action import Action
+from game.tank import Tank
+from game.point import Point
+from game.bullets import Bullets
 
 class ControlActorsAction(Action):
     """The responsibility of this
@@ -28,4 +31,18 @@ class ControlActorsAction(Action):
         """
         direction = self._input_service.get_direction()
         tank = cast["tank"][0] # there's only one in the cast
-        tank.set_velocity(direction.scale(constants.TANK_SPEED))        
+        tank.set_velocity(direction.scale(constants.TANK_SPEED))
+
+        if  self._input_service.is_space_pressed():
+            cast = {}
+            tank = Tank()
+            bullets = []
+            position = tank.get_position()
+            velocity = Point(0, constants.VELOCITY_DX)
+
+            bullet = Bullets()
+            bullet.set_position(position)
+            bullet.set_velocity(velocity)
+            bullets.append(bullet)
+            cast["bullet"] = bullets
+  
