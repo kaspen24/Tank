@@ -1,6 +1,5 @@
 from game.actor import Actor
 from game import constants
-from game import output_service
 
 class Tank(Actor):
     """

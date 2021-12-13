@@ -1,3 +1,4 @@
+
 class Point:
     """Represents distance from an origin (0, 0).
 

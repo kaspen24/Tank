@@ -1,4 +1,3 @@
-import sys
 from game.point import Point
 import raylibpy
 
@@ -63,3 +62,21 @@ class InputService:
 
     def window_should_close(self):
         return raylibpy.window_should_close()
+
+    def is_space_released(self):
+        return raylibpy.is_key_released(raylibpy.KEY_SPACE)
+    
+    def is_down_released(self):
+        return raylibpy.is_key_released(raylibpy.KEY_DOWN)
+
+    def is_up_released(self):
+        return raylibpy.is_key_released(raylibpy.KEY_UP)
+
+    def is_right_released(self):
+        return raylibpy.is_key_released(raylibpy.KEY_RIGHT)
+
+    def is_left_released(self):
+        return raylibpy.is_key_released(raylibpy.KEY_LEFT)
+
+    def is_b_released(self):
+        return raylibpy.is_key_released(raylibpy.KEY_B)

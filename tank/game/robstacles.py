@@ -4,7 +4,7 @@ import random
 
 class Robstacles(Actor):
     """
-    Are the Obstacles in the Game that the Tank tries to shoot.
+    Are the other Enemy Tanks in the Game that the Tank tries to shoot.
     """
     def __init__(self):
         super().__init__()

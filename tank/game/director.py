@@ -1,7 +1,6 @@
 from time import sleep
 
 import raylibpy
-from game import constants
 from game.output_service import OutputService
 output_service = OutputService()
 
@@ -30,24 +29,23 @@ class Director:
     def start_game(self):
         """Starts the game loop to control the sequence of play."""
 
-        #print (f"\033[1;32m DONT LET THE OBSTACLES HIT YOU!")
-        #choice = input("\033[1;32m Are you ready [y/n]:")
-
-        #if choice == "y":
-        #    output_service.open_window("Tank");
+        print("")
+        print("")
+        print("")
+        print (f"\033[1;32m DONT LET THE ENEMY TANKS OR BOMBS HIT YOU!")
+        print (f"REACHING A SCORE OF 15, 30, 50, 100, 200, and 500 WILL RESULT IN A LEVEL UP")
+        print ("")
+        print ("")
+        print("")
             
         while self._keep_playing:
             self._cue_action("input")
             self._cue_action("update")
             self._cue_action("output")
 
-            # TODO: Add some logic like the following to handle game over conditions
-            # if len(self._cast["balls"]) == 0:
-            #     # Game over
-            #     self._keep_playing = False
 
             if raylibpy.window_should_close():
-                elf._keep_playing = False
+                self._keep_playing = False
 
 
     def _cue_action(self, tag):
