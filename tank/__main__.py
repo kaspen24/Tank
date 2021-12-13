@@ -20,7 +20,7 @@ from game.handle_collisions_action import HandleCollisionsAction
 from game.move_actors_action import MoveActorsAction
 
 def main():
-
+  
     cast = {}
 
     backgrounds = []
@@ -79,7 +79,7 @@ def main():
     move_actors_action = MoveActorsAction()
     control_actors_action = ControlActorsAction(input_service)
     handle_collisions_action = HandleCollisionsAction(physics_service)
-
+ 
     script["input"] = [control_actors_action]
     script["update"] = [move_actors_action, handle_collisions_action]
     script["output"] = [draw_actors_action]

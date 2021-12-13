@@ -112,7 +112,7 @@ class ControlActorsAction(Action):
                 ebulletp.set_velocity(velocity)
                 ebulletsp.append(ebulletp)
 
-        if constants.SCORE >= 15:
+        if constants.SCORE >= 10:
             if  self._input_service.is_space_released():
                 bullets = cast["bullet"]
                 position = Point(tank.get_position().get_x() + 8, tank.get_position().get_y())
@@ -123,7 +123,7 @@ class ControlActorsAction(Action):
                 bullet.set_velocity(velocity)
                 bullets.append(bullet)
 
-        if constants.SCORE >= 30:
+        if constants.SCORE >= 25:
             if  self._input_service.is_space_released():
                 bullets = cast["bullet"]
                 position = Point(tank.get_position().get_x() + 8, tank.get_position().get_y())
